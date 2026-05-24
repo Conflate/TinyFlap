@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tiny-flap"
+version = "0.1.0"
+description = "A small Pygame flap-through-the-pipes arcade game."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Conflate" }
+]
+dependencies = [
+  "pygame>=2.5"
+]
+
+[project.scripts]
+tiny-flap = "flappy:main"
+
+[tool.setuptools]
+py-modules = ["flappy"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]

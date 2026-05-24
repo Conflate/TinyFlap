@@ -1,53 +1,74 @@
-# Flappy Bird Game
+# Tiny Flap
 
-The Flappy Bird Game is a simple Python game inspired by the popular mobile game "Flappy Bird." The objective of the game is to navigate a bird through a series of pipes without hitting them. The game keeps track of the player's score based on the number of pipes successfully passed.
+A tiny Pygame arcade game inspired by the familiar flap-through-the-pipes
+formula. It is intentionally small, casual, and easy to run, while still having
+a little polish: animated fallback art, parallax scenery, scoring feedback,
+generated sound effects, and persistent best-score tracking.
 
-## How to Play
+The game will use `bird.png`, `pipe.png`, and `background.png` if they are placed
+next to `flappy.py`; otherwise it draws built-in fallback art so the project can
+run as-is.
 
-1. Install the required dependencies:
-   ```bash
-   pip install pygame
-   ```
+## Screenshot
 
-2. Run the game:
-   ```bash
-   python flappy_bird.py
-   ```
+![Tiny Flap gameplay screenshot](screenshots/gameplay.png)
 
-3. Control the bird using the "Space" key:
-   - Press "Space" to make the bird jump.
-   - Avoid hitting the pipes to keep the game going.
-   - Each successfully passed pipe increases your score.
+## Run
 
-## Gameplay
+```bash
+python3 -m pip install -r requirements.txt
+python3 flappy.py
+```
 
-The bird automatically falls due to gravity. Press the "Space" key to make the bird flap its wings and fly upwards. The bird will descend automatically after each flap. The objective is to navigate the bird through the gaps between the pipes.
+You can also install it locally as a tiny command-line app:
 
-## Scoring
+```bash
+python3 -m pip install -e .
+tiny-flap
+```
 
-The game keeps track of your score based on the number of pipes you pass. Each time you pass a set of pipes, your score increases by one point. Try to achieve the highest score possible!
+## Controls
 
-## Game Over
+| Action | Input |
+| --- | --- |
+| Start / flap / retry | Space or mouse click |
+| Pause / resume | P |
+| Quit | Esc |
 
-The game ends if the bird collides with any of the pipes or if it goes above the screen or below the ground. Once the game is over, you can restart by pressing the "Space" key.
+## Project Structure
 
-## Customization
+```text
+.
+├── flappy.py              # Main game code
+├── requirements.txt       # Minimal runtime dependency
+├── pyproject.toml         # Optional package metadata
+├── .gitignore             # Local files and Python artifacts to ignore
+├── LICENSE                # MIT license
+├── screenshots/           # README images
+└── .github/workflows/ci.yml
+```
 
-You can customize various aspects of the game, such as the bird's appearance, pipe height and gap, game speed, and more. Modify the constants and variables in the `flappy_bird.py` file to tailor the game to your preferences.
+Optional image assets can live next to `flappy.py`:
 
-## Requirements
+```text
+bird.png
+pipe.png
+background.png
+```
 
-- Python 3.x
-- Pygame library
+## Features
 
-## Credits
+- Generated fallback graphics so missing assets do not crash startup.
+- Animated fallback bird art with idle bobbing.
+- Richer pipe shading, parallax clouds and hills, and ground details.
+- Home, pause, and game-over states.
+- Score pop feedback, crash shake, and crash flash.
+- Persistent best score saved outside the repo in `~/.tiny_flap/high_score.txt`.
+- Progressive pipe speed as the score increases.
+- Generated sound effects when audio is available.
 
-This game is created as a demonstration and learning exercise and is inspired by the original "Flappy Bird" game. Credits to Dong Nguyen for creating the original "Flappy Bird" game.
+## Known Limitations
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to add more information, acknowledgments, or any other relevant details to the README file. Don't forget to include the license file (`LICENSE`) in your project directory, as mentioned in the README template above. Happy gaming!
+- This is a casual clone-style project, not a production game engine.
+- The game is tuned by feel rather than by formal playtesting.
+- Custom image assets are supported, but there is no dedicated `assets/` loader yet.
